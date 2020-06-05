@@ -1,56 +1,59 @@
-// function capitalize(str) {
-//     let littleSymbolStr = str.toLowerCase();
-//     let resultArr = littleSymbolStr.split(' ');
-//     let controllArr = resultArr.map(upPer);
-//     function upPer(value) {
-//         return value[0].toUpperCase() + value.substr(1);
-//     }
-//     let resultStr = controllArr.join(' ')
-//     return resultStr;
+const lettersCount = (str) => {
+    let lowReg = str.toLowerCase();
+    let arrFromStr = lowReg.split('');
 
+    let result = {};
+    arrFromStr.forEach(function (a) {
+        if (result[a] != undefined) {
+            ++result[a];
+        } else {
+            result[a] = 1;
+        }
+    })
+    for (let key in result) {
+        key = result[key];
+    }
+    return result;
+
+};
+// console.log(lettersCount('aAAbbccde'));
+// {
+//    a: 3,
+//    b: 2,
+//    c: 2,
+//    d: 1,
+//    e: 1,
 // }
-// const str = 'sOme RanDoM sTRING';
-// console.log(capitalize(str)); //Some Random String
 
-// const reverseLongWords = (str) => {
 
-//     let arrInitial = str.split(' ');
-//     console.log(arrInitial);
-//     let controllArr = arrInitial.map((value) => {
-//         if (value.length > 4) {
-//             let elArr = value.substr(0).split('').reverse().join('');
-//             return elArr
-//         } else {
-//             return value;
-//         }
 
-//     })
-//     let resultStr = controllArr.join(' ')
-//     return resultStr;
+// const areBracketsBalanced = (str) => {
+
+//     let arrSplit = str.split('');
+//     arrSplit.sort()
+//     console.log(arrSplit)
 // };
+// console.log(areBracketsBalanced('(())()'))
 
-// const str = 'This is another test';
-// console.log(reverseLongWords(str))
+//findAllIdx([1,0,1,0,0,1], 0) // [1,3,4]
+//findAllIdx([1,1], 0) // []
+const areBracketsBalanced = (str) => {
+    let resultArr = [];
+    let arr = str.split('');
+    console.log(arr);
+    let filterOpenSymbol = arr.filter((item) => {
+        return item == '(';
+    });
+    let filterCloseSymbol = arr.filter((item) => {
+        return item == ')';
+    });
 
-
-
-// Вставляет символ в конец строки 
-function wrapInParagraphInEnd(str,symbol,index){
-
-    return str.substring(0,index) + symbol;
-}
-
-function wrapInParagraphInStart(str,symbol,index) {
-    return str.substring(0,index) + symbol ;
-}
-
-const text = `some`;
-// console.log(wrapInParagraphInEnd(text,`</p>`, text[text.length]));
-// console.log(wrapInParagraphInStart(text,`<p>`, 0))
-
-function wrapInStr(str) {
-
-    str = wrapInParagraphInStart(str,`</p>`, 0) + wrapInParagraphInEnd(str,`</p>`, str[str.length]);
-    return str;
-}
-console.log(wrapInStr(text))
+    if (filterOpenSymbol.length == filterCloseSymbol.length) {
+        return true;
+    } else if (str = '') {
+        return true;
+    } else {
+        return false;
+    }
+};
+console.log(areBracketsBalanced(''))
